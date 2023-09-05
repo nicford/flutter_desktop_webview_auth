@@ -1,6 +1,6 @@
 import 'src/provider_args.dart';
 
-const _defaultSignInScope = 'https://www.googleapis.com/auth/plus.login';
+const _defaultSignInScope = 'email profile';
 
 class GoogleSignInArgs extends ProviderArgs {
   final String clientId;
@@ -15,14 +15,14 @@ class GoogleSignInArgs extends ProviderArgs {
   final host = 'accounts.google.com';
 
   @override
-  final path = '/o/oauth2/auth';
+  final path = '/o/oauth2/v2/auth';
 
   GoogleSignInArgs({
     required this.clientId,
     required this.redirectUri,
     this.scope = _defaultSignInScope,
     this.immediate = false,
-    this.responseType = 'token id_token',
+    this.responseType = 'token',
   });
 
   @override

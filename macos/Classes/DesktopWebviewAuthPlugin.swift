@@ -56,6 +56,9 @@ public class WebviewController: NSViewController, WKNavigationDelegate {
             decisionHandler(.cancel)
             onComplete!(uriString)
             dismiss(self)
+        } else if uriString.contains("error") {
+            decisionHandler(.cancel)
+            dismiss(self)
         } else {
             decisionHandler(.allow)
         }
@@ -115,7 +118,7 @@ public class DesktopWebviewAuthPlugin: NSObject, FlutterPlugin {
         _openWebview(
             url: signInUrl,
             flow: "signIn",
-            targetUriFragment: redirectUri,
+            targetUriFragment: "access_token",
             width: width,
             height: height
         )
